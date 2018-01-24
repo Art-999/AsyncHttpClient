@@ -21,8 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activites.ShowData"
-            android:theme="@style/AppShowDataActivityStyle"></activity>
+        <activity
+            android:name=".activites.ShowData"
+            android:theme="@style/AppShowDataActivityStyle"
+            android:configChanges="screenSize|orientation
+" />
     </application>
 
 </manifest>

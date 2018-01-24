@@ -40,9 +40,9 @@ public class ShowDataRecycleAdapter extends RecyclerView.Adapter<ShowDataRecycle
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ParentCats currentCats = datalist.get(position);
-        holder.id.setText(currentCats.getCategoryId().toString());
-        holder.name.setText(currentCats.getCategoryName().toString());
-        holder.count.setText(currentCats.getCategoryCount().toString());
+        holder.id.setText("id:"+currentCats.getCategoryId().toString());
+        holder.name.setText("name:"+currentCats.getCategoryName().toString());
+        holder.count.setText("count:"+currentCats.getCategoryCount().toString());
         String url="https://freemegalist.com/images/" + currentCats.getCategoryImage();
        // String url="https://freemegalist.com/images/1410350005-home_&_garden.png";
         Picasso.with(context).load(url).into(holder.imageView);
