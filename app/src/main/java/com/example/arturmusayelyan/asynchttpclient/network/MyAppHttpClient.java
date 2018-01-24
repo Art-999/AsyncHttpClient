@@ -14,7 +14,7 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class MyAppHttpClient {
     private static final String BASE_URL = "https://freemegalist.com/api.php/?action=categories";
-    private static AsyncHttpClient httpClient = new AsyncHttpClient();
+    private static AsyncHttpClient httpClient = new AsyncHttpClient(true, 80,443);
 
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;

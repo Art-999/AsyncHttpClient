@@ -4,23 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.arturmusayelyan.asynchttpclient.MainActivity">
+    tools:context="com.example.arturmusayelyan.asynchttpclient.activites.MainActivity">
+
     <Button
         android:id="@+id/do_call_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Do Call"
-        android:textAllCaps="false"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Do Call"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/show_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/do_call_button"
+        android:text="Show data"
+        android:textAllCaps="false" />
 
     <TextView
-        android:layout_below="@id/do_call_button"
-        android:layout_margin="5dp"
         android:id="@+id/text_view_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        />
+        android:layout_below="@id/do_call_button"
+        android:layout_margin="5dp"
+        android:text="Hello World!" />
 
 </RelativeLayout>

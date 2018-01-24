@@ -3,12 +3,18 @@ package com.example.arturmusayelyan.asynchttpclient.dataModel;
 /**
  * Created by artur.musayelyan on 23/01/2018.
  */
+import android.annotation.SuppressLint;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ParentCats {
+@SuppressLint("ParcelCreator")
+public class ParentCats implements Parcelable,Serializable {
     @SerializedName("category_id")
     @Expose
     private String categoryId;
@@ -24,6 +30,29 @@ public class ParentCats {
     @SerializedName("children_cats")
     @Expose
     private List<ChildCats> childrenCats = null;
+
+    protected ParentCats(Parcel in) {
+        categoryId = in.readString();
+        categoryName = in.readString();
+        categoryImage = in.readString();
+        if (in.readByte() == 0) {
+            categoryCount = null;
+        } else {
+            categoryCount = in.readInt();
+        }
+    }
+
+    public static final Creator<ParentCats> CREATOR = new Creator<ParentCats>() {
+        @Override
+        public ParentCats createFromParcel(Parcel in) {
+            return new ParentCats(in);
+        }
+
+        @Override
+        public ParentCats[] newArray(int size) {
+            return new ParentCats[size];
+        }
+    };
 
     public String getCategoryId() {
         return categoryId;
@@ -73,5 +102,23 @@ public class ParentCats {
     @Override
     public String toString() {
         return categoryId+" "+categoryName+" "+categoryCount+" "+childrenCats;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(categoryId);
+        dest.writeString(categoryName);
+        dest.writeString(categoryImage);
+        if (categoryCount == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(categoryCount);
+        }
     }
 }
