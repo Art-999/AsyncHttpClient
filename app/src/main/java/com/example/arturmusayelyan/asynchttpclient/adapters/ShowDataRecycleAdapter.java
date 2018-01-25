@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.arturmusayelyan.asynchttpclient.R;
 import com.example.arturmusayelyan.asynchttpclient.dataModel.ParentCats;
-import com.squareup.picasso.Picasso;
 
 import java.util.Collections;
 import java.util.List;
@@ -40,12 +40,13 @@ public class ShowDataRecycleAdapter extends RecyclerView.Adapter<ShowDataRecycle
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ParentCats currentCats = datalist.get(position);
-        holder.id.setText("id:"+currentCats.getCategoryId().toString());
-        holder.name.setText("name:"+currentCats.getCategoryName().toString());
-        holder.count.setText("count:"+currentCats.getCategoryCount().toString());
-        String url="https://freemegalist.com/images/" + currentCats.getCategoryImage();
-       // String url="https://freemegalist.com/images/1410350005-home_&_garden.png";
-        Picasso.with(context).load(url).into(holder.imageView);
+        holder.id.setText("id:" + currentCats.getCategoryId().toString());
+        holder.name.setText("name:" + currentCats.getCategoryName().toString());
+        holder.count.setText("count:" + currentCats.getCategoryCount().toString());
+        String url = context.getString(R.string.image_call_url) + currentCats.getCategoryImage();
+        // String url="https://freemegalist.com/images/1410350005-home_&_garden.png";
+        // Picasso.with(context).load(url).into(holder.imageView);
+        Glide.with(context).load(url).into(holder.imageView);
     }
 
 

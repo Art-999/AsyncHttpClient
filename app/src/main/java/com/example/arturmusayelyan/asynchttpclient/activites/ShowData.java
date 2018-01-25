@@ -1,6 +1,7 @@
 package com.example.arturmusayelyan.asynchttpclient.activites;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +27,7 @@ public class ShowData extends AppCompatActivity {
     private List<ParentCats> dataList;
     private ProgressBar progressBar;
     private String dataListFromIntent;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,32 @@ public class ShowData extends AppCompatActivity {
     private void init() {
         recyclerView = findViewById(R.id.recycler_view1);
         progressBar = findViewById(R.id.progress_bar);
+        view=findViewById(R.id.progress_include_layout);
+    }
+    public void showProgressIncludeLayout() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                view.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.setVisibility(View.VISIBLE);
+                    }
+                });
+//                SystemClock.sleep(2000);
+//                hideProgressIncludeLayout();
+            }
+        });
+        thread.start();
+    }
+
+    public void hideProgressIncludeLayout() {
+        view.post(new Runnable() {
+            @Override
+            public void run() {
+                view.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void getCallResult() {
@@ -56,7 +84,8 @@ public class ShowData extends AppCompatActivity {
             @Override
             public void onStart() {
                 super.onStart();
-                progressBar.setVisibility(View.VISIBLE);
+               // progressBar.setVisibility(View.VISIBLE);
+                showProgressIncludeLayout();
             }
 
             @Override
@@ -66,9 +95,14 @@ public class ShowData extends AppCompatActivity {
                 Log.d("Art", dataList.toString());
                 recyclerView.setAdapter(new ShowDataRecycleAdapter(getApplicationContext(), dataList));
                 recyclerView.invalidate();
-                progressBar.setVisibility(View.GONE);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SystemClock.sleep(1000);
+                        hideProgressIncludeLayout();
+                    }
+                }).start();
             }
-
         });
     }
 }
