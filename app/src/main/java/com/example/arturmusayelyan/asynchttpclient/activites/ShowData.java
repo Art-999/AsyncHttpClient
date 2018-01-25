@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.arturmusayelyan.asynchttpclient.R;
 import com.example.arturmusayelyan.asynchttpclient.adapters.ShowDataRecycleAdapter;
@@ -51,8 +52,9 @@ public class ShowData extends AppCompatActivity {
     private void init() {
         recyclerView = findViewById(R.id.recycler_view1);
         progressBar = findViewById(R.id.progress_bar);
-        view=findViewById(R.id.progress_include_layout);
+        view = findViewById(R.id.progress_include_layout);
     }
+
     public void showProgressIncludeLayout() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -84,7 +86,7 @@ public class ShowData extends AppCompatActivity {
             @Override
             public void onStart() {
                 super.onStart();
-               // progressBar.setVisibility(View.VISIBLE);
+                // progressBar.setVisibility(View.VISIBLE);
                 showProgressIncludeLayout();
             }
 
@@ -103,6 +105,14 @@ public class ShowData extends AppCompatActivity {
                     }
                 }).start();
             }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                hideProgressIncludeLayout();
+                Toast.makeText(ShowData.this, "Connection faild", Toast.LENGTH_LONG).show();
+            }
         });
+
     }
 }
