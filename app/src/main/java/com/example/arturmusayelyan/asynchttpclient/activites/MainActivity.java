@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 getCallResult();
                 break;
             case R.id.show_data_button:
-//                Intent intent = new Intent(this, ShowData.class);
+//                Intent intent = new Intent(this, ShowDataActivity.class);
 //                //intent.putExtra("dataKey", (Serializable) dataList);
 //                intent.putExtra("dataKey", parseObjectToStringJson(dataList));
                 MyAppHttpClient.cancelAllRequest();
-                startActivity(new Intent(this, ShowData.class));
+                startActivity(new Intent(this, ShowDataActivity.class));
                 break;
         }
     }

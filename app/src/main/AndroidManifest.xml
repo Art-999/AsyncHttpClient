@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activites.ShowData"
+            android:name=".activites.ShowDataActivity"
             android:theme="@style/AppShowDataActivityStyle"
             android:configChanges="screenSize|orientation
 " />

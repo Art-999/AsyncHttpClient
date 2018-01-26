@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="name"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_field_tv"/>
+    <TextView
+        android:id="@+id/id_field_tv"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_field_tv"
+        android:text="Id"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:id="@+id/count_field_tv"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+
+        android:textColor="@android:color/holo_orange_light"
+        android:text="count"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:layout_margin="5dp"
+        android:layout_below="@id/name_field_tv"
+        android:layout_toRightOf="@id/id_field_tv"/>
+
+
+</RelativeLayout>
