@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">AsyncHttpClient</string>
     <string name="backend_call_url">https://freemegalist.com/api.php/?action=categories</string>
-    <string name="image_call_url">"https://freemegalist.com/images/"</string>
+    <string name="image_call_url">https://freemegalist.com/images/</string>
 </resources>
